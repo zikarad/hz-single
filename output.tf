@@ -1,3 +1,3 @@
-output "public_ip" {
-  value = ["${hcloud_server.node1.name}" , "${hcloud_server.node1.ipv4_address}", "${hcloud_server.node1.ipv6_address}"]
+output "bastion" {
+  value = ["${module.bastion-test.ipv4_address}" , "${module.bastion-test.ipv6_address}"]
 }
