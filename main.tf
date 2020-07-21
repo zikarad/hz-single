@@ -13,7 +13,7 @@ module "bastion-test" {
   source = "modules/vm-single"
 
   server_name = "bastion-test"
-  server_type = "cx11"
+  server_type = "${var.node_type}"
   sshkey_path = "${var.sshkey_path}"
   ssh_keys = "${hcloud_ssh_key.default.id}"
 	network = "${hcloud_network.testMng.id}"
