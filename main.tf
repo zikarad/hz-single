@@ -13,7 +13,7 @@ resource "hcloud_ssh_key" "default" {
 module "bastion" {
   source = "modules/vm-single"
 
-	stage = "${var.stage}"
+  stage = "${var.stage}"
   server_name = "bastion-${var.stage}"
   server_type = "${var.node_type}"
   sshkey_path = "${var.sshkey_path}"
