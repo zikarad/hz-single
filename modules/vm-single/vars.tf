@@ -1,3 +1,7 @@
+variable "stage" {
+	description = "Tier of service"
+}
+
 variable "server_name" {
   description = "Name of the server"
 }
@@ -11,9 +15,14 @@ variable "ssh_keys" {
 }
 
 variable "sshkey_path" {
-  description = "Duplicated variable"
+  description = "Path to private ssh key"
 }
 
 variable "network" {
-	description = "Server network"
+	description = "Server management network"
+}
+
+variable "vol2" {
+	description = "Volume2 size"
+	default = 50
 }
