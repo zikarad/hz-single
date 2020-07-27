@@ -8,11 +8,23 @@ resource "hcloud_server" "node" {
   labels = {
     author = "zikar"
     creator = "terraform"
-    stage = "test"
+    stage = "${var.stage}"
   }
 }
 
 resource "hcloud_server_network" "hsn1" {
   server_id = "${hcloud_server.node.id}"
   network_id = "${var.network}"
+}
+
+resource "hcloud_volume" "vol2" {
+	name = "vol2"
+	location = "nbg1"
+	size = "${var.vol2}"
+}
+
+resource "hcloud_volume_attachment" "v2att" {
+	volume_id = "${hcloud_volume.vol2.id}"
+	server_id = "${hcloud_server.node.id}"
+	automount = true
 }
