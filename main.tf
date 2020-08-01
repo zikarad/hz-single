@@ -14,6 +14,7 @@ module "bastion" {
   source = "modules/vm-single"
 
   stage = "${var.stage}"
+	os_image = "${var.image}"
   server_name = "bastion-${var.stage}"
   server_type = "${var.node_type}"
   sshkey_path = "${var.sshkey_path}"

@@ -1,7 +1,7 @@
 resource "hcloud_server" "node" {
   name = "${var.server_name}"
   location = "nbg1"
-  image = "ubuntu-20.04"
+  image = "${var.os_image}"
   server_type = "${var.server_type}"
   ssh_keys = ["${var.ssh_keys}"]
   

@@ -10,6 +10,11 @@ variable "server_type" {
   description = "Type of instance (size)"
 }
 
+variable "os_image" {
+	description = "OS distribution image"
+	default = "ubuntu-20.04"
+}
+
 variable "ssh_keys" {
   description = "Keys for accessing the server"
 }
