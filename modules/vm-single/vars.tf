@@ -18,8 +18,12 @@ variable "sshkey_path" {
   description = "Path to private ssh key"
 }
 
-variable "network" {
-	description = "Server management network"
+variable "subnet_mng" {
+	description = "Server management subnet"
+}
+
+variable "subnet_proj" {
+	description = "Server project subnet"
 }
 
 variable "vol2" {

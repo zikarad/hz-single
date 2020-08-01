@@ -12,9 +12,14 @@ resource "hcloud_server" "node" {
   }
 }
 
-resource "hcloud_server_network" "hsn1" {
+resource "hcloud_server_network" "hsn_proj" {
   server_id = "${hcloud_server.node.id}"
-  network_id = "${var.network}"
+  subnet_id = "${var.subnet_proj}"
+}
+
+resource "hcloud_server_network" "hsn_mng" {
+  server_id  = "${hcloud_server.node.id}"
+  subnet_id  = "${var.subnet_mng}"
 }
 
 resource "hcloud_volume" "vol2" {

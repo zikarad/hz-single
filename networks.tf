@@ -92,7 +92,7 @@ resource "hcloud_network_subnet" "qa1pr1pub" {
   ip_range = "10.2.1.128/25"
 }
 
-### TEST VLAN + 2 subnets
+### TEST networks + subnets
 
 resource "hcloud_network" "testNet1" {
   name = "testNet1"
