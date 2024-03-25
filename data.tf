@@ -3,19 +3,19 @@ data "template_file" "test_hosts" {
 	template = "${file("templates/inventory.tmpl")}"
 	
 	depends_on = [
-		"module.bastion"
+		module.bastion
 	]
 
-	vars {
-		bastion_name      = "${module.bastion.node_name}"
-		bastion_public_ip = "${module.bastion.ipv4_address}"
+	vars = {
+		bastion_name      = module.bastion.node_name
+		bastion_public_ip = module.bastion.ipv4_address
 	}
 }
 
 resource "null_resource" "dev-hosts" {
 
-	triggers {
-		template_rendered = "${data.template_file.test_hosts.rendered}"
+	triggers = {
+		template_rendered = data.template_file.test_hosts.rendered
 	}
 
 	provisioner "local-exec" {

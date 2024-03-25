@@ -5,10 +5,6 @@ variable node_type {
 	default = "cx11"
 }
 
-variable "image" {
-	description = "OS used for bastion"
-}
-
 variable "stage" {
 	description = "Tier of service"
 	default = "test"

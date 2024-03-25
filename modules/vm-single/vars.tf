@@ -12,7 +12,7 @@ variable "server_type" {
 
 variable "os_image" {
 	description = "OS distribution image"
-	default = "ubuntu-20.04"
+	default = "ubuntu-22.04"
 }
 
 variable "ssh_keys" {
@@ -34,4 +34,8 @@ variable "subnet_proj" {
 variable "vol2" {
 	description = "Volume2 size"
 	default = 50
+}
+
+variable "hcloud_token" {
+  type = string
 }
