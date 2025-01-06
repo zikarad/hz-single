@@ -1,7 +1,4 @@
-resource "hcloud_ssh_key" "default" {
-  name = "Generic cloud key"
-  public_key = "${file("${var.sshkey_path}")}"
-
+locals {
   labels = {
     creator = "terraform"
     author  = "zikar"
@@ -9,12 +6,19 @@ resource "hcloud_ssh_key" "default" {
   }
 }
 
+resource "hcloud_ssh_key" "default" {
+  name = "Single Hcloud key"
+  public_key = file(var.sshkey_path)
+
+  labels = local.labels
+}
+
 
 module "bastion" {
   source = "./modules/vm-single"
 
   stage = var.stage
-  server_name = "bastion-${var.stage}"
+  server_name = join("-", ["bastion", var.stage])
   server_type = var.node_type
   sshkey_path = var.sshkey_path
   vol2 = var.bastion_log_size
@@ -22,5 +26,6 @@ module "bastion" {
 
   subnet_mng  = hcloud_network_subnet.testMng.id
   subnet_proj = hcloud_network_subnet.test1pr1priv.id
+
   hcloud_token = var.hcloud_token
 }
